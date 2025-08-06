@@ -142,7 +142,30 @@
   <script>
     // 數字跳表效果（可自動從後端取得）
     let count = 0;
-    const finalCount = 48594; // ← 可從後端動態抓
+    let count = 0;
+const counter = document.getElementById("counter");
+
+fetch("https://script.google.com/macros/s/AKfycbXXXXXXX/exec") // ← 改成你的 Web App URL
+  .then((res) => res.text())
+  .then((data) => {
+    const finalCount = parseInt(data);
+    const updateCounter = () => {
+      const increment = Math.ceil((finalCount - count) / 30);
+      count += increment;
+      if (count >= finalCount) {
+        counter.innerText = finalCount.toLocaleString();
+        clearInterval(timer);
+      } else {
+        counter.innerText = count.toLocaleString();
+      }
+    };
+    const timer = setInterval(updateCounter, 40);
+  })
+  .catch(err => {
+    counter.innerText = "讀取失敗";
+    console.error("無法取得連署人數：", err);
+  });
+
     const counter = document.getElementById("counter");
 
     const updateCounter = () => {
