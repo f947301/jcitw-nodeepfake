@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JCI Human Duties 連署表單</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 1.8rem;
+      color: #2b2b2b;
+      margin-bottom: 0.5rem;
+    }
+    .main-section {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .image-box {
+      flex: 1 1 50%;
+    }
+    .image-box img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .info-box {
+      flex: 1 1 35%;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #FFD600;
+      color: black;
+      font-weight: bold;
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+      .main-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Support the International Human Duties Day on July 10th!</h1>
+  </header>
+
+  <section class="main-section">
+    <!-- 左邊圖片區 -->
+    <div class="image-box">
+      <img src="your-photo.jpg" alt="Group supporting Human Duties Day" />
+    </div>
+
+    <!-- 右邊 info 區 -->
+    <div class="info-box">
+      <div class="counter">48,594</div>
+      <p>Thanks to your support this petition has a chance at winning!<br>We only need 1,406 more signatures to reach the next goal – can you help?</p>
+      <button class="cta-button">Take the next step!</button>
+    </div>
+  </section>
+
+</body>
+</html>
 
