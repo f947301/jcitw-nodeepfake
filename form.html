@@ -2,125 +2,110 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>拒絕DeepFake與偷拍</title>
+  <title>拒絕深度偽造與偷拍</title>
   <style>
     body {
-      font-family: "Noto Sans TC", sans-serif;
-      background-color: #f8f9fa;
       margin: 0;
-      padding: 0;
-      text-align: center;
+      font-family: sans-serif;
+      background-color: #f5f5f5;
     }
-
     header {
-      background: #fff;
-      padding: 1.5rem 1rem 1rem;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
-    .title {
-      font-size: 1.8rem;
+    header img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+    header h1 {
+      font-size: 1.6rem;
+      margin: 0;
       font-weight: bold;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .title img {
-      height: 48px;
-      vertical-align: middle;
-      display: inline-block;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-
-    #form-container {
-      max-width: 400px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    input {
-      display: block;
+      gap: 2rem;
+      max-width: 1200px;
       width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
     }
-
+    .left img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    .right {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 360px;
+    }
+    .right h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin-top: 1.5rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
     button {
       width: 100%;
-      padding: 0.75rem;
-      background-color: #007bff;
-      color: white;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    #thank-you {
-      color: green;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    #total {
+      margin-top: 2rem;
+      padding: 1rem;
       font-size: 1.2rem;
       font-weight: bold;
-      margin: 2rem 0 1rem;
+      background: #f8cb00;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
     }
-
-    #list {
-      max-width: 400px;
-      margin: auto;
-      text-align: left;
+    #recent {
+      margin-top: 3rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 2rem;
     }
-
-    .entry {
-      border-bottom: 1px solid #ccc;
-      padding: 0.5rem 0;
+    #recent h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
     }
-
-    @media (max-width: 600px) {
-      .title {
-        font-size: 1.5rem;
-      }
-
-      .title img {
-        height: 40px;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      #form-container {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
+    .tag {
+      display: inline-block;
+      background: #eee;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      margin: 0.3rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-    <header>
+  <header>
     <img src="assets/jci.png" alt="Logo" />
     <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
   </header>
@@ -129,77 +114,70 @@
       <div class="left">
         <img src="assets/photo.jpg" alt="活動圖片">
       </div>
-  <div id="form-container">
-    <input type="text" id="chapter" placeholder="請輸入分會" required />
-    <input type="text" id="name" placeholder="請輸入姓名" required />
-    <button onclick="submitForm()">送出連署</button>
-    <div id="thank-you" style="display: none;">感謝您的連署！</div>
-  </div>
+      <div class="right">
+        <h2 id="count">讀取中...</h2>
+        <label>分會名稱：<input id="chapter" placeholder="請輸入分會"></label>
+        <label>姓名：<input id="name" placeholder="請輸入姓名"></label>
+        <button onclick="submitForm()">送出連署</button>
+      </div>
+    </div>
 
-  <div id="total">目前總連署人數：-- 人</div>
-  <div id="list"></div>
+    <div id="recent">
+      <h3>最近響應者：</h3>
+      <div id="recentList"></div>
+    </div>
+  </main>
 
   <script>
-    const endpoint = 'https://script.google.com/macros/s/AKfycbx126ktqurKHWg8TmFVp0xNUApMZKpArHfH7xTeYoI02rl7B8RBOqfk2A-KeWbyXLFN5w/exec';
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec";
 
-    async function fetchData() {
+    async function loadData() {
       try {
-        const res = await fetch(endpoint);
+        const res = await fetch(scriptUrl);
         const data = await res.json();
-
-        // 更新總連署人數
-        document.getElementById('total').textContent = `目前總連署人數：${data.length} 人`;
-
-        // 顯示最近10筆
-        const list = document.getElementById('list');
-        list.innerHTML = '';
-        const latest = data.slice(-10).reverse();
-        latest.forEach(entry => {
-          const div = document.createElement('div');
-          div.className = 'entry';
-          div.textContent = `${entry.分會} - ${entry.姓名}`;
+        document.getElementById("count").textContent = data.total;
+        const list = document.getElementById("recentList");
+        list.innerHTML = "";
+        data.recent.forEach(row => {
+          const div = document.createElement("div");
+          div.className = "tag";
+          div.textContent = `${row[0]}・${row[1]}・剛剛連署`;
           list.appendChild(div);
         });
-
-      } catch (error) {
-        console.error('資料讀取失敗：', error);
+      } catch (e) {
+        document.getElementById("count").textContent = "讀取失敗";
       }
     }
 
     async function submitForm() {
-      const chapter = document.getElementById('chapter').value.trim();
-      const name = document.getElementById('name').value.trim();
-      const thankYou = document.getElementById('thank-you');
+      const chapter = document.getElementById("chapter").value.trim();
+      const name = document.getElementById("name").value.trim();
+      if (!chapter || !name) return alert("請填寫所有欄位");
 
-      if (!chapter || !name) {
-        alert('請填寫完整資料');
-        return;
-      }
+      const formData = new FormData();
+      formData.append("chapter", chapter);
+      formData.append("name", name);
 
       try {
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          body: new URLSearchParams({ '分會': chapter, '姓名': name }),
+        const res = await fetch(scriptUrl, {
+          method: "POST",
+          body: formData
         });
-
-        if (res.ok) {
-          // 顯示感謝訊息並清空表單
-          thankYou.style.display = 'block';
-          setTimeout(() => thankYou.style.display = 'none', 3000);
-          document.getElementById('chapter').value = '';
-          document.getElementById('name').value = '';
-          fetchData(); // 更新清單與人數
+        const result = await res.text();
+        if (result.includes("成功")) {
+          alert("送出成功！");
+          document.getElementById("chapter").value = "";
+          document.getElementById("name").value = "";
+          loadData();
         } else {
-          alert('送出失敗，請稍後再試');
+          alert("送出失敗！\n" + result);
         }
-      } catch (error) {
-        alert('發生錯誤：' + error.message);
+      } catch (err) {
+        alert("送出失敗！");
       }
     }
 
-    // 首次載入與每3秒自動更新
-    fetchData();
-    setInterval(fetchData, 3000);
+    loadData();
   </script>
 </body>
 </html>
