@@ -2,8 +2,15 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>拒絕深度偽造與偷拍</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JCI Taiwan 拒絕深度偽造與偷拍</title>
+  <meta name="description" content="JCI Taiwan 倡議拒絕 DeepFake 與數位性暴力，邀請你一起加入數位正義行動！">
+  <meta property="og:title" content="JCI Taiwan 拒絕深度偽造與偷拍" />
+  <meta property="og:description" content="一起拒絕 DeepFake 與數位性暴力，加入 JCI Taiwan 數位正義行動！" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jacklyn5322.github.io/deepfake3/" />
+  <meta property="og:image" content="https://jacklyn5322.github.io/assets/share-image.jpg" />
+
   <style>
     body {
       margin: 0;
@@ -11,17 +18,34 @@
       background-color: #f5f5f5;
     }
 
+    /* Header 樣式 */
     header {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 1rem;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    header img {
+    .jci-logo {
       height: 50px;
+    }
+
+    .page-title {
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    /* 📱 手機版：只顯示 Logo，隱藏標題 */
+    @media (max-width: 768px) {
+      .page-title {
+        display: none;
+      }
     }
 
     main {
@@ -137,6 +161,7 @@
       white-space: nowrap;
     }
 
+    /* 💻 桌機版排版 */
     @media (min-width: 769px) {
       .container {
         flex-direction: row;
@@ -159,12 +184,17 @@
       .title-text {
         text-align: left;
       }
+
+      .page-title {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/jci.png" alt="JCI Logo" />
+    <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
+    <h1 class="page-title">拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO</h1>
   </header>
 
   <main>
