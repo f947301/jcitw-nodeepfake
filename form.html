@@ -10,61 +10,75 @@
       font-family: sans-serif;
       background-color: #f5f5f5;
     }
+
     header {
       display: flex;
       align-items: center;
-      padding: 1rem 2rem;
+      justify-content: center;
+      padding: 1rem;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
     header img {
       height: 50px;
-      margin-right: 1rem;
     }
-    header h1 {
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: bold;
-    }
+
     main {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
+      padding: 0;
     }
+
     .container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      max-width: 1200px;
       width: 100%;
+      max-width: 100%;
+      margin: 0;
+      position: relative;
     }
+
     .left img {
       width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
+      border-radius: 0;
     }
+
     .right {
       background: white;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 360px;
-    }
-    .right h2 {
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+      margin-top: -60px;
+      z-index: 10;
+      position: relative;
       text-align: center;
-      font-size: 2.5rem;
+    }
+
+    .title-text {
+      font-size: 1.1rem;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .right h2 {
+      font-size: 3rem;
       margin: 0 0 1rem;
       font-weight: bold;
     }
+
     label {
       display: block;
+      text-align: left;
       margin-top: 1.5rem;
       font-weight: bold;
     }
+
     input {
       width: 100%;
       padding: 0.6rem;
@@ -73,6 +87,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     button {
       width: 100%;
       margin-top: 2rem;
@@ -84,6 +99,7 @@
       cursor: pointer;
       border-radius: 8px;
     }
+
     #thanksMessage {
       text-align: center;
       margin-top: 1rem;
@@ -91,23 +107,27 @@
       font-weight: bold;
       font-size: 1rem;
     }
+
     #recent {
       margin-top: 3rem;
       width: 100%;
       max-width: 1200px;
       padding: 0 2rem;
     }
+
     #recent h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
       font-weight: bold;
     }
+
     #recentList {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       overflow-x: auto;
     }
+
     .tag {
       display: inline-block;
       background: #eee;
@@ -117,48 +137,34 @@
       white-space: nowrap;
     }
 
-    /* 📱 手機版 RWD */
-    @media (max-width: 768px) {
-      main {
-        padding: 0;
-      }
+    @media (min-width: 769px) {
       .container {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        position: relative;
-      }
-      .left img {
-        border-radius: 0;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-      .right {
-        max-width: 90%;
-        margin: -80px auto 0;
-        position: relative;
-        z-index: 10;
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      }
-      header {
-        padding: 1rem;
         flex-direction: row;
         justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
       }
-      header h1 {
-        font-size: 1rem;
-        text-align: center;
+
+      .left img {
+        max-width: 600px;
+      }
+
+      .right {
+        margin-top: 0;
+        width: 100%;
+        max-width: 360px;
+        text-align: left;
+      }
+
+      .title-text {
+        text-align: left;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/jci.png" alt="Logo" />
-    <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
+    <img src="assets/jci.png" alt="JCI Logo" />
   </header>
 
   <main>
@@ -167,6 +173,9 @@
         <img src="assets/photo.jpg" alt="活動圖片">
       </div>
       <div class="right">
+        <div class="title-text">
+          拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
+        </div>
         <h2 id="count">讀取中...</h2>
         <label>分會名稱：<input id="chapter" placeholder="請輸入分會"></label>
         <label>姓名：<input id="name" placeholder="請輸入姓名"></label>
