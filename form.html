@@ -20,14 +20,17 @@
 
     /* Header 樣式 */
     header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       padding: 1rem;
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: center;
+    }
+
+    .header-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .jci-logo {
@@ -41,10 +44,27 @@
       line-height: 1.6;
     }
 
-    /* 📱 手機版：只顯示 Logo，隱藏標題 */
     @media (max-width: 768px) {
       .page-title {
         display: none;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .header-wrap {
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .jci-logo {
+        height: 48px;
+      }
+
+      .page-title {
+        display: block;
+        text-align: left;
+        font-size: 1.5rem;
+        line-height: 1.4;
       }
     }
 
@@ -161,7 +181,6 @@
       white-space: nowrap;
     }
 
-    /* 💻 桌機版排版 */
     @media (min-width: 769px) {
       .container {
         flex-direction: row;
@@ -184,17 +203,15 @@
       .title-text {
         text-align: left;
       }
-
-      .page-title {
-        font-size: 1.6rem;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-     <img src="assets/jci.png" alt="Logo" />
-    <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
+    <div class="header-wrap">
+      <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
+      <h1 class="page-title">拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO</h1>
+    </div>
   </header>
 
   <main>
