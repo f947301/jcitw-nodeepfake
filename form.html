@@ -1,114 +1,173 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JCI Human Duties</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>拒絕深度偽造與偷拍</title>
   <style>
-    body { font-family: sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
-    header { display: flex; align-items: center; padding: 1rem; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    header img { height: 40px; margin-right: 1rem; }
-    header h1 { font-size: 1.5rem; margin: 0; display: flex; align-items: center; }
-    .container { max-width: 1000px; margin: 2rem auto; padding: 1rem; background: white; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 2rem; }
-    .left, .right { flex: 1; min-width: 300px; }
-    .left img { width: 100%; border-radius: 8px; }
-    .right { display: flex; flex-direction: column; align-items: center; }
-    .counter { font-size: 3rem; font-weight: bold; margin: 1rem 0; }
-    label { display: block; margin-top: 1rem; text-align: left; width: 100%; }
-    input { width: 100%; padding: 0.5rem; font-size: 1rem; margin-top: 0.25rem; }
-    button { background: #FFD700; border: none; padding: 1rem 2rem; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 2rem; width: 100%; }
-    .recent { margin-top: 2rem; }
-    .recent h2 { font-size: 1.2rem; }
-    .recent-item { background: #eee; padding: 0.5rem 1rem; border-radius: 999px; display: inline-block; margin: 0.25rem; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f5f5f5;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: bold;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .content {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .left img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .right {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 1;
+      max-width: 400px;
+    }
+    .right h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      width: 100%;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: #f8cb00;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    #recent {
+      margin-top: 3rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    #recent h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #eee;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin: 0.2rem;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/sci.png" alt="Logo">
+    <img src="assets/sci.png" alt="Logo" />
     <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
   </header>
-
-  <main class="container">
-    <div class="left">
-      <img src="assets/banner.jpg" alt="活動圖片">
+  <main>
+    <div class="content">
+      <div class="left">
+        <img src="assets/banner.jpg" alt="活動圖片">
+      </div>
+      <div class="right">
+        <h2 id="count">讀取中...</h2>
+        <label>分會名稱：<input id="chapter" placeholder="請輸入分會"></label>
+        <label>姓名：<input id="name" placeholder="請輸入姓名"></label>
+        <button onclick="submitForm()">送出連署</button>
+      </div>
     </div>
-    <div class="right">
-      <div class="counter" id="totalCount">讀取中...</div>
 
-      <label for="chapter">分會名稱：</label>
-      <input type="text" id="chapter" placeholder="例如：安安">
-
-      <label for="name">姓名：</label>
-      <input type="text" id="name" placeholder="例如：小明">
-
-      <button onclick="submitForm()">送出連署</button>
+    <div id="recent">
+      <h3>最近響應者：</h3>
+      <div id="recentList"></div>
     </div>
   </main>
-
-  <div class="container recent">
-    <h2>最近響應者:</h2>
-    <div id="recentList"></div>
-  </div>
 
   <script>
     const scriptUrl = "https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec";
 
-    function loadData() {
-      fetch(scriptUrl)
-        .then(res => res.json())
-        .then(data => {
-          if (data.error) throw new Error(data.message);
-          document.getElementById("totalCount").innerText = data.total;
-
-          const list = document.getElementById("recentList");
-          list.innerHTML = "";
-          data.recent.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "recent-item";
-            div.innerText = item;
-            list.appendChild(div);
-          });
-        })
-        .catch(err => {
-          document.getElementById("totalCount").innerText = "讀取失敗";
-          console.error("讀取錯誤：", err);
+    async function loadData() {
+      try {
+        const res = await fetch(scriptUrl);
+        const data = await res.json();
+        document.getElementById("count").textContent = data.total;
+        const list = document.getElementById("recentList");
+        list.innerHTML = "";
+        data.recent.forEach(row => {
+          const div = document.createElement("div");
+          div.className = "tag";
+          div.textContent = `${row[0]}・${row[1]}・剛剛連署`;
+          list.appendChild(div);
         });
+      } catch (e) {
+        document.getElementById("count").textContent = "讀取失敗";
+      }
     }
 
-    function submitForm() {
-      const chapterInput = document.getElementById("chapter");
-      const nameInput = document.getElementById("name");
-      const chapter = chapterInput.value.trim();
-      const name = nameInput.value.trim();
+    async function submitForm() {
+      const chapter = document.getElementById("chapter").value.trim();
+      const name = document.getElementById("name").value.trim();
+      if (!chapter || !name) return alert("請填寫所有欄位");
 
-      if (!chapter || !name) {
-        alert("請完整填寫分會與姓名");
-        return;
-      }
+      const formData = new FormData();
+      formData.append("chapter", chapter);
+      formData.append("name", name);
 
-      fetch(scriptUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chapter, name })
-      })
-      .then(res => res.text())
-      .then(msg => {
-        if (msg.includes("成功")) {
+      try {
+        const res = await fetch(scriptUrl, {
+          method: "POST",
+          body: formData
+        });
+        const result = await res.text();
+        if (result.includes("成功")) {
           alert("送出成功！");
-          chapterInput.value = "";
-          nameInput.value = "";
+          document.getElementById("chapter").value = "";
+          document.getElementById("name").value = "";
           loadData();
         } else {
-          alert("送出失敗：" + msg);
+          alert("送出失敗！\n" + result);
         }
-      })
-      .catch(err => {
-        alert("連線錯誤：" + err);
-      });
+      } catch (err) {
+        alert("送出失敗！");
+      }
     }
 
-    window.onload = loadData;
+    loadData();
   </script>
 </body>
 </html>
