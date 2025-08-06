@@ -140,47 +140,35 @@
   </section>
 
   <script>
-    // 數字跳表效果（可自動從後端取得）
-    let count = 0;
-    let count = 0;
-const counter = document.getElementById("counter");
-
-fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec") // ← 改成你的 Web App URL
-  .then((res) => res.text())
-  .then((data) => {
-    const finalCount = parseInt(data);
-    const updateCounter = () => {
-      const increment = Math.ceil((finalCount - count) / 30);
-      count += increment;
-      if (count >= finalCount) {
-        counter.innerText = finalCount.toLocaleString();
-        clearInterval(timer);
-      } else {
-        counter.innerText = count.toLocaleString();
-      }
-    };
-    const timer = setInterval(updateCounter, 40);
-  })
-  .catch(err => {
-    counter.innerText = "讀取失敗";
-    console.error("無法取得連署人數：", err);
-  });
-
     const counter = document.getElementById("counter");
+    let count = 0;
 
-    const updateCounter = () => {
-      const increment = Math.ceil((finalCount - count) / 30);
-      count += increment;
-      if (count >= finalCount) {
-        counter.innerText = finalCount.toLocaleString();
-        clearInterval(timer);
-      } else {
-        counter.innerText = count.toLocaleString();
-      }
-    };
-    const timer = setInterval(updateCounter, 40);
+    function updateCountFromSheet() {
+      count = 0;
+      fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec")
+        .then(res => res.text())
+        .then(data => {
+          const finalCount = parseInt(data);
+          const updateCounter = () => {
+            const increment = Math.ceil((finalCount - count) / 30);
+            count += increment;
+            if (count >= finalCount) {
+              counter.innerText = finalCount.toLocaleString();
+              clearInterval(timer);
+            } else {
+              counter.innerText = count.toLocaleString();
+            }
+          };
+          const timer = setInterval(updateCounter, 40);
+        })
+        .catch(err => {
+          counter.innerText = "讀取失敗";
+          console.error("無法取得連署人數：", err);
+        });
+    }
 
-    // 顯示最近響應者
+    updateCountFromSheet();
+
     function addRecentSigner(chapter, name) {
       const container = document.getElementById("recent-signers");
       const item = document.createElement("span");
@@ -193,7 +181,6 @@ fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBy
       container.prepend(item);
     }
 
-    // 表單送出（可改連接 Apps Script API）
     document.getElementById("pledgeForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
@@ -201,9 +188,25 @@ fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBy
       const name = form.name.value.trim();
 
       if (chapter && name) {
-        addRecentSigner(chapter, name);
-        form.reset();
-        // 可加上 fetch 到 Google Sheet 的程式
+        fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `chapter=${encodeURIComponent(chapter)}&name=${encodeURIComponent(name)}`
+        })
+        .then(res => res.text())
+        .then(msg => {
+          if (msg === "OK") {
+            addRecentSigner(chapter, name);
+            form.reset();
+            updateCountFromSheet();
+          } else {
+            alert("送出失敗！");
+          }
+        })
+        .catch(err => {
+          alert("送出失敗！");
+          console.error(err);
+        });
       }
     });
   </script>
