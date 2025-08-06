@@ -83,6 +83,13 @@
       cursor: pointer;
       border-radius: 8px;
     }
+    #thanksMessage {
+      text-align: center;
+      margin-top: 1rem;
+      color: green;
+      font-weight: bold;
+      font-size: 1rem;
+    }
     #recent {
       margin-top: 3rem;
       width: 100%;
@@ -119,6 +126,7 @@
         <label>分會名稱：<input id="chapter" placeholder="請輸入分會"></label>
         <label>姓名：<input id="name" placeholder="請輸入姓名"></label>
         <button onclick="submitForm()">送出連署</button>
+        <div id="thanksMessage"></div>
       </div>
     </div>
 
@@ -136,12 +144,15 @@
         const res = await fetch(scriptUrl);
         const data = await res.json();
         document.getElementById("count").textContent = data.total;
+
         const list = document.getElementById("recentList");
         list.innerHTML = "";
-        data.recent.forEach(row => {
+
+        const recentEntries = data.recent.slice(-10); // 只取最後10筆
+        recentEntries.forEach(row => {
           const div = document.createElement("div");
           div.className = "tag";
-          div.textContent = `${row[0]}・${row[1]}・剛剛連署`;
+          div.textContent = `${row[0]}・${row[1]}`; // 移除「剛剛連署」
           list.appendChild(div);
         });
       } catch (e) {
@@ -152,6 +163,9 @@
     async function submitForm() {
       const chapter = document.getElementById("chapter").value.trim();
       const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("thanksMessage");
+      message.textContent = "";
+
       if (!chapter || !name) return alert("請填寫所有欄位");
 
       const formData = new FormData();
@@ -165,9 +179,9 @@
         });
         const result = await res.text();
         if (result.includes("成功")) {
-          alert("送出成功！");
           document.getElementById("chapter").value = "";
           document.getElementById("name").value = "";
+          message.textContent = "謝謝你的響應";
           loadData();
         } else {
           alert("送出失敗！\n" + result);
@@ -178,6 +192,7 @@
     }
 
     loadData();
+    setInterval(loadData, 3000); // 每3秒自動更新
   </script>
 </body>
 </html>
