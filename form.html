@@ -1,215 +1,114 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JCI Human Duties 連署表單</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JCI Human Duties</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-    }
-    header {
-      background: white;
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .title-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-    .title-container h1 {
-      font-size: 1.5rem;
-      color: #2b2b2b;
-      margin: 0;
-    }
-    .title-container img {
-      height: 40px;
-    }
-    .main-section {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-    .image-box {
-      flex: 1 1 50%;
-    }
-    .image-box img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .info-box {
-      flex: 1 1 35%;
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .counter {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    form label {
-      display: block;
-      margin-bottom: 1rem;
-      font-weight: bold;
-    }
-    form input {
-      width: 100%;
-      padding: 0.6rem;
-      font-size: 1rem;
-      margin-top: 0.3rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button.cta-button {
-      display: inline-block;
-      background: #FFD600;
-      color: black;
-      font-weight: bold;
-      padding: 1rem;
-      text-align: center;
-      width: 100%;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-    @media (max-width: 768px) {
-      .main-section {
-        flex-direction: column;
-      }
-    }
+    body { font-family: sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+    header { display: flex; align-items: center; padding: 1rem; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    header img { height: 40px; margin-right: 1rem; }
+    header h1 { font-size: 1.5rem; margin: 0; display: flex; align-items: center; }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 1rem; background: white; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 2rem; }
+    .left, .right { flex: 1; min-width: 300px; }
+    .left img { width: 100%; border-radius: 8px; }
+    .right { display: flex; flex-direction: column; align-items: center; }
+    .counter { font-size: 3rem; font-weight: bold; margin: 1rem 0; }
+    label { display: block; margin-top: 1rem; text-align: left; width: 100%; }
+    input { width: 100%; padding: 0.5rem; font-size: 1rem; margin-top: 0.25rem; }
+    button { background: #FFD700; border: none; padding: 1rem 2rem; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 2rem; width: 100%; }
+    .recent { margin-top: 2rem; }
+    .recent h2 { font-size: 1.2rem; }
+    .recent-item { background: #eee; padding: 0.5rem 1rem; border-radius: 999px; display: inline-block; margin: 0.25rem; }
   </style>
 </head>
 <body>
-
-  <!-- 上方標題 + logo -->
   <header>
-    <div class="title-container">
-      <img src="assets/jci.png" alt="JCI logo">
-      <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
-    </div>
+    <img src="assets/sci.png" alt="Logo">
+    <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
   </header>
 
-  <!-- 主要內容 -->
-  <section class="main-section">
-
-    <!-- 左圖 -->
-    <div class="image-box">
-      <img src="assets/photo.jpg" alt="活動合照">
+  <main class="container">
+    <div class="left">
+      <img src="assets/banner.jpg" alt="活動圖片">
     </div>
+    <div class="right">
+      <div class="counter" id="totalCount">讀取中...</div>
 
-    <!-- 右區：數字+表單 -->
-    <div class="info-box">
-      <div class="counter" id="counter">0</div>
+      <label for="chapter">分會名稱：</label>
+      <input type="text" id="chapter" placeholder="例如：安安">
 
-      <form id="pledgeForm">
-        <label>
-          分會名稱：
-          <input type="text" name="chapter" required />
-        </label>
+      <label for="name">姓名：</label>
+      <input type="text" id="name" placeholder="例如：小明">
 
-        <label>
-          姓名：
-          <input type="text" name="name" required />
-        </label>
-
-        <button type="submit" class="cta-button">送出連署</button>
-      </form>
+      <button onclick="submitForm()">送出連署</button>
     </div>
-  </section>
+  </main>
 
-  <!-- 最近響應者區塊 -->
-  <section style="max-width: 960px; margin: auto; padding: 1rem 1rem 3rem;">
-    <h3 style="margin-bottom: 1rem;">最近響應者:</h3>
-    <div id="recent-signers" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
-  </section>
+  <div class="container recent">
+    <h2>最近響應者:</h2>
+    <div id="recentList"></div>
+  </div>
 
   <script>
-    const counter = document.getElementById("counter");
-    let count = 0;
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec";
 
-    function updateCountFromSheet() {
-      count = 0;
-      fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec")
-        .then(res => res.text())
+    function loadData() {
+      fetch(scriptUrl)
+        .then(res => res.json())
         .then(data => {
-          const finalCount = parseInt(data);
-          const updateCounter = () => {
-            const increment = Math.ceil((finalCount - count) / 30);
-            count += increment;
-            if (count >= finalCount) {
-              counter.innerText = finalCount.toLocaleString();
-              clearInterval(timer);
-            } else {
-              counter.innerText = count.toLocaleString();
-            }
-          };
-          const timer = setInterval(updateCounter, 40);
+          if (data.error) throw new Error(data.message);
+          document.getElementById("totalCount").innerText = data.total;
+
+          const list = document.getElementById("recentList");
+          list.innerHTML = "";
+          data.recent.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "recent-item";
+            div.innerText = item;
+            list.appendChild(div);
+          });
         })
         .catch(err => {
-          counter.innerText = "讀取失敗";
-          console.error("無法取得連署人數：", err);
+          document.getElementById("totalCount").innerText = "讀取失敗";
+          console.error("讀取錯誤：", err);
         });
     }
 
-    updateCountFromSheet();
+    function submitForm() {
+      const chapterInput = document.getElementById("chapter");
+      const nameInput = document.getElementById("name");
+      const chapter = chapterInput.value.trim();
+      const name = nameInput.value.trim();
 
-    function addRecentSigner(chapter, name) {
-      const container = document.getElementById("recent-signers");
-      const item = document.createElement("span");
-      item.textContent = `${chapter}・${name} • 剛剛連署`;
-      item.style.padding = "0.4rem 0.8rem";
-      item.style.background = "#eee";
-      item.style.borderRadius = "20px";
-      item.style.fontSize = "0.9rem";
-      item.style.whiteSpace = "nowrap";
-      container.prepend(item);
-    }
-
-    document.getElementById("pledgeForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const chapter = form.chapter.value.trim();
-      const name = form.name.value.trim();
-
-      if (chapter && name) {
-        fetch("https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `chapter=${encodeURIComponent(chapter)}&name=${encodeURIComponent(name)}`
-        })
-        .then(res => res.text())
-        .then(msg => {
-          if (msg === "OK") {
-            addRecentSigner(chapter, name);
-            form.reset();
-            updateCountFromSheet();
-          } else {
-            alert("送出失敗！");
-          }
-        })
-        .catch(err => {
-          alert("送出失敗！");
-          console.error(err);
-        });
+      if (!chapter || !name) {
+        alert("請完整填寫分會與姓名");
+        return;
       }
-    });
-  </script>
 
+      fetch(scriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chapter, name })
+      })
+      .then(res => res.text())
+      .then(msg => {
+        if (msg.includes("成功")) {
+          alert("送出成功！");
+          chapterInput.value = "";
+          nameInput.value = "";
+          loadData();
+        } else {
+          alert("送出失敗：" + msg);
+        }
+      })
+      .catch(err => {
+        alert("連線錯誤：" + err);
+      });
+    }
+
+    window.onload = loadData;
+  </script>
 </body>
 </html>
