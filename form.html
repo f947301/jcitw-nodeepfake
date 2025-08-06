@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,14 +13,24 @@
     }
     header {
       background: white;
-      padding: 1.5rem 2rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    h1 {
-      font-size: 1.8rem;
+    .title-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+    .title-container h1 {
+      font-size: 1.5rem;
       color: #2b2b2b;
-      margin-bottom: 0.5rem;
+      margin: 0;
+    }
+    .title-container img {
+      height: 40px;
     }
     .main-section {
       max-width: 960px;
@@ -48,9 +58,23 @@
     .counter {
       font-size: 2rem;
       font-weight: bold;
-      margin: 1rem 0;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
-    .cta-button {
+    form label {
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    form input {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button.cta-button {
       display: inline-block;
       background: #FFD600;
       color: black;
@@ -62,6 +86,7 @@
       font-size: 1.2rem;
       cursor: pointer;
       border-radius: 8px;
+      margin-top: 1rem;
     }
     @media (max-width: 768px) {
       .main-section {
@@ -72,24 +97,74 @@
 </head>
 <body>
 
+  <!-- 上方標題 + logo -->
   <header>
-    <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
+    <div class="title-container">
+      <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
+      <img src="assets/jci.png" alt="JCI logo">
+    </div>
   </header>
 
+  <!-- 主要內容 -->
   <section class="main-section">
-    <!-- 左邊圖片區 -->
+
+    <!-- 左圖 -->
     <div class="image-box">
-      <img src="assets/photo.jpg" alt="Group supporting Human Duties Day" />
+      <img src="assets/photo.jpg" alt="活動合照">
     </div>
 
-    <!-- 右邊 info 區 -->
+    <!-- 右區：數字+表單 -->
     <div class="info-box">
-      <div class="counter">48,594</div>
-      <p>Thanks to your support this petition has a chance at winning!<br>We only need 1,406 more signatures to reach the next goal – can you help?</p>
-      <button class="cta-button">Take the next step!</button>
+      <div class="counter" id="counter">0</div>
+
+      <form id="pledgeForm">
+        <label>
+          分會名稱：
+          <input type="text" name="chapter" required />
+        </label>
+
+        <label>
+          姓名：
+          <input type="text" name="name" required />
+        </label>
+
+        <button type="submit" class="cta-button">送出連署</button>
+      </form>
     </div>
   </section>
 
+  <script>
+    // 數字跳表效果（可自動從後端取得）
+    let count = 0;
+    const finalCount = 48594; // ← 可從後端動態抓
+    const counter = document.getElementById("counter");
+
+    const updateCounter = () => {
+      const increment = Math.ceil((finalCount - count) / 30);
+      count += increment;
+      if (count >= finalCount) {
+        counter.innerText = finalCount.toLocaleString();
+        clearInterval(timer);
+      } else {
+        counter.innerText = count.toLocaleString();
+      }
+    };
+    const timer = setInterval(updateCounter, 40);
+
+    // 表單送出（可改連接 Apps Script API）
+    document.getElementById("pledgeForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const chapter = form.chapter.value.trim();
+      const name = form.name.value.trim();
+
+      if (chapter && name) {
+        alert("感謝您的連署！");
+        form.reset();
+        // 可加上 fetch 到 Google Sheet 的程式
+      }
+    });
+  </script>
+
 </body>
 </html>
-
