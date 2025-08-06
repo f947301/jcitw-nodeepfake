@@ -133,6 +133,12 @@
     </div>
   </section>
 
+  <!-- 最近響應者區塊 -->
+  <section style="max-width: 960px; margin: auto; padding: 1rem 1rem 3rem;">
+    <h3 style="margin-bottom: 1rem;">Recent signers:</h3>
+    <div id="recent-signers" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+  </section>
+
   <script>
     // 數字跳表效果（可自動從後端取得）
     let count = 0;
@@ -151,6 +157,19 @@
     };
     const timer = setInterval(updateCounter, 40);
 
+    // 顯示最近響應者
+    function addRecentSigner(chapter, name) {
+      const container = document.getElementById("recent-signers");
+      const item = document.createElement("span");
+      item.textContent = `${chapter}・${name} • 剛剛連署`;
+      item.style.padding = "0.4rem 0.8rem";
+      item.style.background = "#eee";
+      item.style.borderRadius = "20px";
+      item.style.fontSize = "0.9rem";
+      item.style.whiteSpace = "nowrap";
+      container.prepend(item);
+    }
+
     // 表單送出（可改連接 Apps Script API）
     document.getElementById("pledgeForm").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -159,7 +178,7 @@
       const name = form.name.value.trim();
 
       if (chapter && name) {
-        alert("感謝您的連署！");
+        addRecentSigner(chapter, name);
         form.reset();
         // 可加上 fetch 到 Google Sheet 的程式
       }
