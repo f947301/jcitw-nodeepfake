@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>拒絕深度偽造與偷拍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
@@ -101,13 +102,56 @@
       margin-bottom: 1rem;
       font-weight: bold;
     }
+    #recentList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
     .tag {
       display: inline-block;
       background: #eee;
       padding: 0.5rem 1.2rem;
       border-radius: 20px;
-      margin: 0.3rem;
       font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* 📱 手機版 RWD */
+    @media (max-width: 768px) {
+      main {
+        padding: 0;
+      }
+      .container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        position: relative;
+      }
+      .left img {
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+      .right {
+        max-width: 90%;
+        margin: -80px auto 0;
+        position: relative;
+        z-index: 10;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+      header {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: center;
+      }
+      header h1 {
+        font-size: 1rem;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -116,6 +160,7 @@
     <img src="assets/jci.png" alt="Logo" />
     <h1>拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO</h1>
   </header>
+
   <main>
     <div class="container">
       <div class="left">
@@ -148,11 +193,11 @@
         const list = document.getElementById("recentList");
         list.innerHTML = "";
 
-        const recentEntries = data.recent.slice(-10); // 只取最後10筆
+        const recentEntries = data.recent.slice(-10);
         recentEntries.forEach(row => {
           const div = document.createElement("div");
           div.className = "tag";
-          div.textContent = `${row[0]}・${row[1]}`; // 移除「剛剛連署」
+          div.textContent = `${row[0]}・${row[1]}`;
           list.appendChild(div);
         });
       } catch (e) {
@@ -192,7 +237,7 @@
     }
 
     loadData();
-    setInterval(loadData, 3000); // 每3秒自動更新
+    setInterval(loadData, 3000);
   </script>
 </body>
 </html>
