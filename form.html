@@ -37,32 +37,11 @@
       line-height: 1.4;
     }
 
-    @media (max-width: 768px) {
-      .header-wrap {
-        flex-direction: column;
-      }
-      .page-title {
-        display: none;
-      }
-    }
-
     .main-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
-    }
-
-    @media (min-width: 769px) {
-      .main-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: auto;
-        padding: 3rem 2rem;
-      }
     }
 
     .left {
@@ -112,8 +91,18 @@
       text-align: center;
     }
 
-    /* sticky 整合進來 */
+    /* 電腦版 sticky 功能 */
     @media (min-width: 769px) {
+      .main-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: auto;
+        padding: 3rem 2rem;
+      }
+
       .right {
         position: sticky;
         top: 100px;
@@ -170,6 +159,37 @@
       font-weight: bold;
       font-size: 1rem;
     }
+
+    /* ✅ 手機版調整 */
+    @media (max-width: 768px) {
+      .header-wrap {
+        flex-direction: column;
+      }
+
+      .page-title {
+        display: none;
+      }
+
+      .main-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .left, .right {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .right {
+        margin-top: -2rem;
+        z-index: 10;
+      }
+
+      .right h3 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -185,10 +205,34 @@
   <main class="main-container">
     <div class="left">
       <img src="assets/photo.jpg" alt="活動圖片">
+    </div>
+
+    <div class="right">
+      <!-- ✅ 手機版標語 -->
+      <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.4;">
+        拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
+      </div>
+      <h3 id="count">讀取中...</h3>
+      <p>目前已響應人數</p>
+
+      <label>分會名稱：
+        <input id="chapter" placeholder="請輸入分會">
+      </label>
+
+      <label>姓名：
+        <input id="name" placeholder="請輸入姓名">
+      </label>
+
+      <button onclick="submitForm()">送出連署</button>
+      <div id="thanksMessage"></div>
+    </div>
+
+    <div class="left">
       <div id="recent">
         <h3>最近響應者：</h3>
         <div id="recentList"></div>
 
+        <!-- 響應議題說明 -->
         <div style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
           <h2 style="color: #222; font-size: 1.5rem; margin-bottom: 1rem;">響應議題</h2>
           <p>
@@ -231,22 +275,6 @@
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="right">
-      <h3 id="count">讀取中...</h3>
-      <p>目前已響應人數</p>
-
-      <label>分會名稱：
-        <input id="chapter" placeholder="請輸入分會">
-      </label>
-
-      <label>姓名：
-        <input id="name" placeholder="請輸入姓名">
-      </label>
-
-      <button onclick="submitForm()">送出連署</button>
-      <div id="thanksMessage"></div>
     </div>
   </main>
 
