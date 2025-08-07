@@ -3,109 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>JCI Taiwan 拒絕深度偽造與偷拍</title>
+  <meta name="description" content="JCI Taiwan 倡議拒絕 DeepFake 與數位性暴力，邀請你一起加入數位正義行動！">
+
+  <!-- Open Graph 預覽 (LINE、Facebook 會使用) -->
+  <meta property="og:title" content="JCI Taiwan 拒絕深度偽造與偷拍" />
+  <meta property="og:description" content="JCI Taiwan 拒絕深度偽造與偷拍" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jacklyn5322.github.io/deepfake3/" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; font-family: 'Arial', sans-serif; }
+
+    .hero {
+      position: relative;
+      background: url('./assets/bg.jpg') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    /* ✅ 手機版 hero 區塊樣式 */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 1rem;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin: 0 auto 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00aaff;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background-color: #00aaff;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #008ecc;
+    }
+
+    /* ✅ 手機版樣式強化 */
     @media (max-width: 768px) {
-      .mobile-hero {
-        position: relative;
-        background-image: url('assets/photo.jpg'); /* ✅ 換成你自己的圖 */
-        background-size: cover;
-        background-position: center;
-        height: 90vh;
-        color: white;
+      .logo {
+        max-width: 140px;
       }
 
-      .mobile-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 1.5rem;
+      h1 {
+        font-size: 1.8rem;
       }
 
-      .mobile-jci-logo {
-        height: 60px;
-        margin-bottom: 1rem;
-        align-self: flex-start;
+      h2 {
+        font-size: 1.2rem;
+        white-space: nowrap; /* 這行會讓 DeepFake NO 不換行 */
+        overflow-x: auto;
       }
 
-      .mobile-text-group .line1 {
-        color: #00a0e9;
-        font-size: 1.3rem;
-        font-weight: bold;
-        text-align: left;
-        margin-bottom: 0.4rem;
+      p {
+        font-size: 0.9rem;
       }
 
-      .mobile-text-group .line2,
-      .mobile-text-group .line3 {
-        color: white;
-        font-size: 1.3rem;
-        font-weight: bold;
-        text-align: left;
-        margin-bottom: 0.4rem;
-      }
-
-      .mobile-cta {
-        margin-top: 1.2rem;
-        background-color: #00a0e9;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 0.8rem 1.6rem;
-        font-size: 1rem;
-        font-weight: bold;
-        align-self: flex-start;
-      }
-    }
-
-    /* ✅ 電腦版排版用空白範例 */
-    @media (min-width: 769px) {
-      .desktop-placeholder {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: #333;
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- ✅ 手機版 Hero 區塊 -->
-  <div class="mobile-hero">
-    <div class="mobile-overlay">
-      <img src="assets/jci.png" alt="JCI Logo" class="mobile-jci-logo" />
-      <div class="mobile-text-group">
-        <div class="line1">拒絕深度偽造與偷拍</div>
-        <div class="line2">DeepFake NO</div>
-        <div class="line3">Digital Sexual Crime NO</div>
-      </div>
-      <button class="mobile-cta" onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})">
-        點我響應
-      </button>
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <img src="./assets/logo.png" alt="Logo" class="logo">
+      <h1>拒絕深度偽造與偷拍</h1>
+      <h2>DeepFake NO, Digital Sexual Crime NO</h2>
+      <p>
+        Support the Universal Declaration of Human Duties for Leaders<br>
+        and Celebrate International Human Duties Day on July 10th.
+      </p>
+      <a href="form.html" class="btn">點我響應</a>
     </div>
-  </div>
-
-  <!-- ✅ 電腦版佔位（讓你未來接續電腦版內容） -->
-  <div class="desktop-placeholder">
-    <span>這裡是電腦版內容區塊（僅電腦版會看到）</span>
-  </div>
-
-  <!-- ✅ 響應表單區塊（共用手機與電腦） -->
-  <div id="formSection" style="padding: 3rem 1rem; text-align: center;">
-    <h2>響應連署表單</h2>
-    <p>這裡是響應區塊內容，你可以放入表單、統計、資料等</p>
   </div>
 </body>
 </html>
