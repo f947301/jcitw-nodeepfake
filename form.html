@@ -1,281 +1,161 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JCI Taiwan 拒絕深度偽造與偷拍</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: sans-serif;
       background-color: #f5f5f5;
     }
 
-    /* Header */
     header {
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 2rem;
-    }
-
-    .header-wrap {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background-color: white;
       flex-wrap: wrap;
       gap: 1rem;
-      max-width: 1200px;
-      margin: auto;
     }
 
-    .jci-logo {
-      height: 48px;
+    header img {
+      height: 40px;
     }
 
-    .page-title {
-      font-size: 1.5rem;
+    header h1 {
+      font-size: 1.2rem;
+      margin: 0;
       font-weight: bold;
-      line-height: 1.4;
     }
 
-    @media (max-width: 768px) {
-      .page-title {
-        display: none;
-      }
+    header h2 {
+      font-size: 1rem;
+      margin: 0;
+      font-weight: normal;
     }
 
-    .main-container {
+    main {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    @media (min-width: 769px) {
-      .main-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: auto;
-        padding: 3rem 2rem;
-      }
-    }
-
-    .left {
-      flex: 1;
-      max-width: 750px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
     .left img {
       width: 100%;
-      border-radius: 15px;
-      display: block;
-    }
-
-    .image-wrapper {
-      position: relative;
+      border-radius: 20px;
+      max-width: 800px;
     }
 
     .right {
-      background: white;
+      width: 300px;
+      background-color: #fff;
+      border-radius: 20px;
       padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 100%;
-      max-width: 380px;
-      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .count {
+      font-size: 2rem;
       text-align: center;
-      height: auto;
-    }
-
-    @media (min-width: 769px) {
-      .image-wrapper {
-        height: auto;
-      }
-
-      .image-wrapper img {
-        height: auto;
-      }
-
-      .right {
-        height: auto;
-        aspect-ratio: 3 / 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-    }
-
-    .right h3 {
-      font-size: 3rem;
       font-weight: bold;
-      margin: 0 0 0.3rem;
-    }
-
-    .right p {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 1.5rem;
     }
 
     label {
-      display: block;
-      text-align: left;
-      margin-top: 1rem;
       font-weight: bold;
     }
 
     input {
-      width: 100%;
-      padding: 0.6rem;
+      padding: 0.5rem;
       font-size: 1rem;
-      margin-top: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
+      width: 100%;
     }
 
     button {
-      width: 100%;
-      margin-top: 2rem;
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      background: #f8cb00;
+      padding: 0.75rem;
+      background-color: #FFD700;
       border: none;
-      cursor: pointer;
       border-radius: 8px;
-    }
-
-    #thanksMessage {
-      text-align: center;
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
       font-size: 1rem;
-    }
-
-    #recent {
-      margin-top: 1.5rem;
-    }
-
-    #recent h3 {
-      font-size: 1rem;
-      margin-bottom: 0.8rem;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    #recentList {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    .recent {
+      margin-top: 2rem;
+      text-align: left;
     }
 
-    .tag {
+    .recent span {
       display: inline-block;
-      background: #eee;
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
+      background-color: #eee;
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      margin: 0.2rem;
       font-size: 0.9rem;
-      white-space: nowrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+
+      header h1, header h2 {
+        text-align: center;
+      }
+
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-wrap">
-      <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
-      <h1 class="page-title">拒絕深度偽造與偷拍&nbsp;&nbsp;DeepFake NO, Digital Sexual Crime NO</h1>
+    <img src="jci.jpg" alt="JCI Taiwan Logo">
+    <div>
+      <h1>拒絕深度偽造與偷拍</h1>
+      <h2>DeepFake NO, Digital Sexual Crime NO</h2>
     </div>
   </header>
 
-  <main class="main-container">
+  <main>
     <div class="left">
-      <div class="image-wrapper">
-        <img src="assets/photo.jpg" alt="活動圖片" />
-      </div>
-      <div id="recent">
-        <h3>最近響應者：</h3>
-        <div id="recentList"></div>
+      <img src="your-image.jpg" alt="活動圖片">
+      <div class="recent">
+        <strong>最近響應者：</strong><br>
+        <span>高都．仲崴</span>
+        <span>我我我．安安安</span>
+        <span>嗯嗯．嘿嘿</span>
+        <span>分會名稱．姓名</span>
       </div>
     </div>
 
     <div class="right">
-      <h3 id="count">讀取中...</h3>
-      <p>目前已響應人數</p>
-
-      <label>分會名稱：
-        <input id="chapter" placeholder="請輸入分會">
-      </label>
-
-      <label>姓名：
-        <input id="name" placeholder="請輸入姓名">
-      </label>
-
-      <button onclick="submitForm()">送出連署</button>
-      <div id="thanksMessage"></div>
+      <div class="count">3</div>
+      <div style="text-align: center; font-size: 0.9rem; color: gray;">目前已響應人數</div>
+      <label>分會名稱：</label>
+      <input type="text" placeholder="請輸入分會">
+      <label>姓名：</label>
+      <input type="text" placeholder="請輸入姓名">
+      <button>送出連署</button>
     </div>
   </main>
-
-  <script>
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec";
-
-    async function loadData() {
-      try {
-        const res = await fetch(scriptUrl);
-        const data = await res.json();
-        document.getElementById("count").textContent = data.total;
-
-        const list = document.getElementById("recentList");
-        list.innerHTML = "";
-
-        const recentEntries = data.recent.slice(-10);
-        recentEntries.forEach(row => {
-          const div = document.createElement("div");
-          div.className = "tag";
-          div.textContent = `${row[0]}・${row[1]}`;
-          list.appendChild(div);
-        });
-      } catch (e) {
-        document.getElementById("count").textContent = "讀取失敗";
-      }
-    }
-
-    async function submitForm() {
-      const chapter = document.getElementById("chapter").value.trim();
-      const name = document.getElementById("name").value.trim();
-      const message = document.getElementById("thanksMessage");
-      message.textContent = "";
-
-      if (!chapter || !name) return alert("請填寫所有欄位");
-
-      const formData = new FormData();
-      formData.append("chapter", chapter);
-      formData.append("name", name);
-
-      try {
-        const res = await fetch(scriptUrl, {
-          method: "POST",
-          body: formData
-        });
-        const result = await res.text();
-        if (result.includes("成功")) {
-          document.getElementById("chapter").value = "";
-          document.getElementById("name").value = "";
-          message.textContent = "謝謝你的響應";
-          loadData();
-        } else {
-          alert("送出失敗！\n" + result);
-        }
-      } catch (err) {
-        alert("送出失敗！");
-      }
-    }
-
-    loadData();
-    setInterval(loadData, 3000);
-  </script>
 </body>
 </html>
