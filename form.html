@@ -37,32 +37,11 @@
       line-height: 1.4;
     }
 
-    @media (max-width: 768px) {
-      .header-wrap {
-        flex-direction: column;
-      }
-      .page-title {
-        display: none;
-      }
-    }
-
     .main-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
-    }
-
-    @media (min-width: 769px) {
-      .main-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: auto;
-        padding: 3rem 2rem;
-      }
     }
 
     .left {
@@ -110,15 +89,6 @@
       max-width: 380px;
       box-sizing: border-box;
       text-align: center;
-    }
-
-    /* sticky 整合進來 */
-    @media (min-width: 769px) {
-      .right {
-        position: sticky;
-        top: 100px;
-        align-self: flex-start;
-      }
     }
 
     .right h3 {
@@ -170,6 +140,68 @@
       font-weight: bold;
       font-size: 1rem;
     }
+
+    /* sticky for desktop only */
+    @media (min-width: 769px) {
+      .main-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: auto;
+        padding: 3rem 2rem;
+      }
+
+      .right {
+        position: sticky;
+        top: 100px;
+        align-self: flex-start;
+      }
+
+      .mobile-only {
+        display: none;
+      }
+    }
+
+    /* mobile version layout */
+    @media (max-width: 768px) {
+      .header-wrap {
+        flex-direction: column;
+      }
+
+      .page-title {
+        display: none;
+      }
+
+      .main-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .left, .right {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .right {
+        margin-top: -1.5rem;
+        z-index: 10;
+      }
+
+      .right h3 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+      }
+
+      .mobile-only {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+    }
   </style>
 </head>
 <body>
@@ -189,6 +221,7 @@
         <h3>最近響應者：</h3>
         <div id="recentList"></div>
 
+        <!-- 響應議題說明 -->
         <div style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
           <h2 style="color: #222; font-size: 1.5rem; margin-bottom: 1rem;">響應議題</h2>
           <p>
@@ -221,11 +254,11 @@
               Deepfake 製作或散布亦屬刑責範疇，若牟利或造成重大損害，依妨害名譽或妨害秘密罪加重處罰。<br>
               台灣 2023 年已完成《性私密影像防制法》修法，針對 Deepfake 建立明確刑罰規範。
             </li>
-            <li style="margin-bottom: 0;">
+            <li>
               <strong>社會重大事件與輿論關注：</strong><br>
               2024 年台灣破獲史上最大非法色情集團，逮捕 449 人，大量偷拍與未成年性影像流傳。
             </li>
-            <li style="margin-bottom: 0;">
+            <li>
               <strong>警政單位與婦女團體持續呼籲政府建立深偽 AI 鑑識中心與快速通報機制。</strong>
             </li>
           </ul>
@@ -234,6 +267,9 @@
     </div>
 
     <div class="right">
+      <div class="mobile-only">
+        拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
+      </div>
       <h3 id="count">讀取中...</h3>
       <p>目前已響應人數</p>
 
