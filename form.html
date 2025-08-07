@@ -20,9 +20,11 @@
 
     .header-wrap {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 1rem;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
     .jci-logo {
@@ -30,13 +32,15 @@
     }
 
     .page-title {
-      margin-top: 0.5rem;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      line-height: 1.6;
+      line-height: 1.4;
     }
 
     @media (max-width: 768px) {
+      .header-wrap {
+        flex-direction: column;
+      }
       .page-title {
         display: none;
       }
@@ -64,12 +68,6 @@
     .left {
       flex: 1;
       max-width: 750px;
-    }
-
-    .left h2 {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
     }
 
     .left img {
@@ -169,13 +167,14 @@
   <header>
     <div class="header-wrap">
       <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
-      <h1 class="page-title">拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO</h1>
+      <div class="page-title">
+        拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
+      </div>
     </div>
   </header>
 
   <main class="main-container">
     <div class="left">
-      <h2>拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO</h2>
       <img src="assets/photo.jpg" alt="活動圖片">
       <div id="recent">
         <h3>最近響應者：</h3>
