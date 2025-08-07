@@ -12,7 +12,7 @@
   <meta property="og:description" content="JCI Taiwan 拒絕深度偽造與偷拍" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jacklyn5322.github.io/deepfake3/" />
-</head>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body, html { height: 100%; font-family: 'Arial', sans-serif; }
@@ -39,10 +39,11 @@
       position: relative;
       z-index: 2;
       max-width: 90%;
+      padding: 1rem;
     }
 
     .logo {
-      max-width: 200px; /* 原本是 100px，這裡放大 */
+      max-width: 200px;
       margin: 0 auto 20px;
     }
 
@@ -59,6 +60,7 @@
     p {
       font-size: 1rem;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .btn {
@@ -75,11 +77,30 @@
       background-color: #008ecc;
     }
 
+    /* ✅ 手機版樣式強化 */
     @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.2rem; }
-      p  { font-size: 0.9rem; }
-      .logo { max-width: 150px; }
+      .logo {
+        max-width: 140px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        white-space: nowrap; /* 這行會讓 DeepFake NO 不換行 */
+        overflow-x: auto;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+      }
     }
   </style>
 </head>
