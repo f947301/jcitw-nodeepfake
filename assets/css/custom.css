@@ -1,0 +1,110 @@
+@charset "UTF-8";
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      background: url('../bg.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      padding: 1rem;
+    }
+
+    .logo {
+      max-width: 300px;
+      margin: 0 auto 36px;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: #00aaff;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 30px;
+      white-space: nowrap;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #eeeeee;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      background-color: #00aaff;
+      color: white;
+      padding: 16px 36px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: background 0.3s;
+      min-width: 240px;
+      text-align: center;
+      display: inline-block;
+      box-shadow: 1px  3px  #00000080;
+    }
+
+    .btn:hover {
+      background-color: #008ecc;
+    }
+
+    @media (max-width: 992px) {
+        .hero {
+      position: relative;
+      background: url('../bg-m.jpg') no-repeat center center/cover;
+      .logo {
+        max-width: 140px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size:1.5rem;
+        min-width: 180px;
+      }
+    }
