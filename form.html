@@ -1,352 +1,358 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JCI Taiwan 拒絕深度偽造與偷拍</title>
-  <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JCI Taiwan 拒絕深度偽造與偷拍</title>
+    <style>
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f5f5f5;
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #f5f5f5;
     }
 
     header {
-      padding: 1rem;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: center;
+        padding: 1rem;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 
     .header-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-direction: row;
-      flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .jci-logo {
-      height: 50px;
+        height: 50px;
     }
 
     .page-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      line-height: 1.4;
+        font-size: 1.2rem;
+        font-weight: bold;
+        line-height: 1.4;
     }
 
     .main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
     }
 
     .left {
-      flex: 1;
-      max-width: 750px;
+        flex: 1;
+        max-width: 750px;
     }
 
     .left img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 1.5rem;
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 1.5rem;
     }
 
     #recent {
-      margin-top: 1rem;
+        margin-top: 1rem;
     }
 
     #recent h3 {
-      font-size: 1rem;
-      margin-bottom: 0.8rem;
-      font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        font-weight: bold;
     }
 
     #recentList {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .tag {
-      display: inline-block;
-      background: #eee;
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      white-space: nowrap;
+        display: inline-block;
+        background: #eee;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        white-space: nowrap;
     }
 
     .right {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 100%;
-      max-width: 380px;
-      box-sizing: border-box;
-      text-align: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 380px;
+        box-sizing: border-box;
+        text-align: center;
     }
 
     .right h3 {
-      font-size: 2.8rem;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
     }
 
     .right p {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #555;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
     }
 
     label {
-      display: block;
-      text-align: left;
-      margin-top: 1rem;
-      font-weight: bold;
+        display: block;
+        text-align: left;
+        margin-top: 1rem;
+        font-weight: bold;
     }
 
     input {
-      width: 100%;
-      padding: 0.6rem;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
+        width: 100%;
+        padding: 0.6rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     button {
-      width: 100%;
-      margin-top: 2rem;
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      background: #f8cb00;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background: #f8cb00;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
     }
 
     #thanksMessage {
-      text-align: center;
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
-      font-size: 1rem;
+        text-align: center;
+        margin-top: 1rem;
+        color: green;
+        font-weight: bold;
+        font-size: 1rem;
     }
 
     /* sticky for desktop only */
     @media (min-width: 769px) {
-      .main-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: auto;
-        padding: 3rem 2rem;
-      }
+        .main-container {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+            padding: 3rem 2rem;
+        }
 
-      .right {
-        position: sticky;
-        top: 100px;
-        align-self: flex-start;
-      }
+        .right {
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+        }
 
-      .mobile-only {
-        display: none;
-      }
+        .mobile-only {
+            display: none;
+        }
     }
 
     /* mobile version layout */
     @media (max-width: 768px) {
-      .header-wrap {
-        flex-direction: column;
-      }
+        .header-wrap {
+            flex-direction: column;
+        }
 
-      .page-title {
-        display: none;
-      }
+        .page-title {
+            display: none;
+        }
 
-      .main-container {
-        flex-direction: column;
-        padding: 1rem;
-      }
+        .main-container {
+            flex-direction: column;
+            padding: 1rem;
+        }
 
-      .left, .right {
-        width: 100%;
-        max-width: 100%;
-      }
+        .left,
+        .right {
+            width: 100%;
+            max-width: 100%;
+        }
 
-      .right {
-        margin-top: -1.5rem;
-        z-index: 10;
-      }
+        .right {
+            margin-top: -1.5rem;
+            z-index: 10;
+        }
 
-      .right h3 {
-        font-size: 2rem;
-        margin-top: 0.5rem;
-      }
+        .right h3 {
+            font-size: 2rem;
+            margin-top: 0.5rem;
+        }
 
-      .mobile-only {
-        display: block;
-        font-size: 1.1rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        line-height: 1.4;
-      }
+        .mobile-only {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
     }
-  </style>
+    </style>
 </head>
+
 <body>
-  <header>
-    <div class="header-wrap">
-      <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
-      <div class="page-title">
-        拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO
-      </div>
-    </div>
-  </header>
-
-  <main class="main-container">
-    <div class="left">
-      <img src="assets/photo.jpg" alt="活動圖片">
-      <div id="recent">
-        <h3>最近響應者：</h3>
-        <div id="recentList"></div>
-
-        <!-- 響應議題說明 -->
-        <div style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
-          <h2 style="color: #222; font-size: 1.5rem; margin-bottom:0.5rem; line-height: 1;" >數位性暴力，絕對不行！</h2>
-          <h3 style="color: #222; font-size: 1.3rem; margin-bottom: 1rem;">「Deep Fake NO, Digital Sexual Crime NO」</h3>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科技進步的同時，也衍生「深度偽造（DeepFake）」與「偷拍」等數位性暴力犯罪，無情地侵害他人的隱私與尊嚴。為了對抗這股歪風，JCI Taiwan 與 JCI Korea 攜手合作，發起「Deep Fake NO, Digital Sexual Crime NO」活動，號召青商會員與社會大眾一同站出來，拒絕成為數位性暴力的幫兇！<br><br>
-
-我們堅信，科技的發展不應以犧牲人權為代價。你的每一次響應，都代表著對數位性暴力的堅定拒絕。這些響應資料將會被整合，成為我們向政府倡議的有力依據，並在國際舞台上，讓世界看見台灣青年為捍衛人權所展現的行動力與價值。<br><br>
-
-邀請你，與我們一起發聲，終結數位性暴力！
-請進入網站連結一起響應！
-          </p>
-
-          <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ccc;" />
-
-          <h3 style="margin-top: 1rem; color: #444;">台灣數位性犯罪與偷拍／DeepFake 條列數據整理</h3>
-
-          <ul style="padding-left: 1.2rem; margin-top: 1rem;">
-            <li style="margin-bottom: 1rem;">
-              <strong>偷拍與非法影像製作現況：</strong><br>
-              台灣 6.8% 成年人曾遭偷拍私密影像（每 15 人中就有 1 人）。偷拍仍是性影像犯罪的主因，2023 年媒體揭露案件中偷拍占比高達 41%。受害者中女性占比超過 75%，呈現長期不對稱現象。
-            </li>
-            <li style="margin-bottom: 1rem;">
-              <strong>深偽影像（Deepfake）與實際案件：</strong><br>
-              「網紅 Deepfake 事件」波及 83 名受害者，主嫌獲刑 5 年徒。Deepfake 被廣泛應用於未經同意的換臉色情影片牟利，觀看者超過百萬人次。
-            </li>
-            <li style="margin-bottom: 1rem;">
-              <strong>數位性別暴力總體趨勢：</strong><br>
-              台灣近 5 年性騷擾申訴數量成長 2.6 倍，其中偷拍與色情影像傳送比例從 16% 增至 26%。<br>
-              「數位性別暴力」已被納入《性別平等教育法》《性私密影像防制法》中明確禁止。
-            </li>
-            <li style="margin-bottom: 1rem;">
-              <strong>法律與政策回應：</strong><br>
-              未經同意拍攝或散布性私密影像：最重可處 5 年徒刑。<br>
-              Deepfake 製作或散布亦屬刑責範疇，若牟利或造成重大損害，依妨害名譽或妨害秘密罪加重處罰。<br>
-              台灣 2023 年已完成《性私密影像防制法》修法，針對 Deepfake 建立明確刑罰規範。
-            </li>
-            <li>
-              <strong>社會重大事件與輿論關注：</strong><br>
-              2024 年台灣破獲史上最大非法色情集團，逮捕 449 人，大量偷拍與未成年性影像流傳。
-            </li>
-            <li>
-              <strong>警政單位與婦女團體持續呼籲政府建立深偽 AI 鑑識中心與快速通報機制。</strong>
-            </li>
-          </ul>
+    <header>
+        <div class="header-wrap">
+            <img src="assets/jci.png" alt="JCI Taiwan Logo" class="jci-logo" />
+            <div class="page-title">
+                拒絕深度偽造與偷拍 DeepFake NO, Digital Sexual Crime NO
+            </div>
         </div>
-      </div>
-    </div>
-
-    <div class="right">
-      <div class="mobile-only">
-        拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
-      </div>
-      <h3 id="count">讀取中...</h3>
-      <p>目前已響應人數</p>
-
-      <label>分會名稱：
-        <input id="chapter" placeholder="請輸入分會">
-      </label>
-
-      <label>姓名：
-        <input id="name" placeholder="請輸入姓名">
-      </label>
-
-      <button onclick="submitForm()">Yes！&nbsp;I&nbsp;&nbsp;&nbsp;Do</button>
-      <div id="thanksMessage"></div>
-    </div>
-  </main>
-
-  <script>
+    </header>
+    <main class="main-container">
+        <div class="left">
+            <img src="assets/photo.jpg" alt="活動圖片">
+            <div id="recent">
+                <h3>最近響應者：</h3>
+                <div id="recentList"></div>
+                <!-- 響應議題說明 -->
+                <div style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; line-height: 1.8; font-size: 1.05rem; color: #333;">
+                    <h2 style="color: #222; font-size: 1.5rem; margin-bottom:0.5rem; line-height: 1;">數位性暴力，絕對不行！</h2>
+                    <h3 style="color: #222; font-size: 1.3rem; margin-bottom: 1rem;">「Deep Fake NO, Digital Sexual Crime NO」</h3>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科技進步的同時，也衍生「深度偽造（DeepFake）」與「偷拍」等數位性暴力犯罪，無情地侵害他人的隱私與尊嚴。為了對抗這股歪風，JCI Taiwan 與 JCI Korea 攜手合作，發起「Deep Fake NO, Digital Sexual Crime NO」活動，號召青商會員與社會大眾一同站出來，拒絕成為數位性暴力的幫兇！<br><br>
+                        我們堅信，科技的發展不應以犧牲人權為代價。你的每一次響應，都代表著對數位性暴力的堅定拒絕。這些響應資料將會被整合，成為我們向政府倡議的有力依據，並在國際舞台上，讓世界看見台灣青年為捍衛人權所展現的行動力與價值。<br><br>
+                        邀請你，與我們一起發聲，終結數位性暴力！
+                        請進入網站連結一起響應！
+                    </p>
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ccc;" />
+                    <h3 style="margin-top: 1rem; color: #444;">台灣數位性犯罪與偷拍／DeepFake 條列數據整理</h3>
+                    <ul style="padding-left: 1.2rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 1rem;">
+                            <strong>偷拍與非法影像製作現況：</strong><br>
+                            台灣 6.8% 成年人曾遭偷拍私密影像（每 15 人中就有 1 人）。偷拍仍是性影像犯罪的主因，2023 年媒體揭露案件中偷拍占比高達 41%。受害者中女性占比超過 75%，呈現長期不對稱現象。
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong>深偽影像（Deepfake）與實際案件：</strong><br>
+                            「網紅 Deepfake 事件」波及 83 名受害者，主嫌獲刑 5 年徒。Deepfake 被廣泛應用於未經同意的換臉色情影片牟利，觀看者超過百萬人次。
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong>數位性別暴力總體趨勢：</strong><br>
+                            台灣近 5 年性騷擾申訴數量成長 2.6 倍，其中偷拍與色情影像傳送比例從 16% 增至 26%。<br>
+                            「數位性別暴力」已被納入《性別平等教育法》《性私密影像防制法》中明確禁止。
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong>法律與政策回應：</strong><br>
+                            未經同意拍攝或散布性私密影像：最重可處 5 年徒刑。<br>
+                            Deepfake 製作或散布亦屬刑責範疇，若牟利或造成重大損害，依妨害名譽或妨害秘密罪加重處罰。<br>
+                            台灣 2023 年已完成《性私密影像防制法》修法，針對 Deepfake 建立明確刑罰規範。
+                        </li>
+                        <li>
+                            <strong>社會重大事件與輿論關注：</strong><br>
+                            2024 年台灣破獲史上最大非法色情集團，逮捕 449 人，大量偷拍與未成年性影像流傳。
+                        </li>
+                        <li>
+                            <strong>警政單位與婦女團體持續呼籲政府建立深偽 AI 鑑識中心與快速通報機制。</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="mobile-only">
+                拒絕深度偽造與偷拍<br>DeepFake NO, Digital Sexual Crime NO
+            </div>
+            <h3 id="count">讀取中...</h3>
+            <p>目前已響應人數</p>
+            <label>分會名稱：
+                <input id="chapter" placeholder="請輸入分會，尚未加入請填'一般民眾'">
+            </label>
+            <label>姓名：
+                <input id="name" placeholder="請輸入姓名">
+            </label>
+            <button onclick="submitForm()">Yes！&nbsp;I&nbsp;&nbsp;&nbsp;Do</button>
+            <div id="thanksMessage"></div>
+        </div>
+    </main>
+    <script>
     const scriptUrl = "https://script.google.com/macros/s/AKfycbzuxv8KWSxtwE11MqhSabau81729xbQBywpwgOEXAQwQvz3jyCVnHdaWCafvZtE4KrC6g/exec";
 
     async function loadData() {
-      try {
-        const res = await fetch(scriptUrl);
-        const data = await res.json();
-        document.getElementById("count").textContent = data.total;
+        try {
+            const res = await fetch(scriptUrl);
+            const data = await res.json();
+            document.getElementById("count").textContent = data.total;
 
-        const list = document.getElementById("recentList");
-        list.innerHTML = "";
+            const list = document.getElementById("recentList");
+            list.innerHTML = "";
 
-        const recentEntries = data.recent.slice(-10);
-        recentEntries.forEach(row => {
-          const div = document.createElement("div");
-          div.className = "tag";
-          div.textContent = `${row[0]}・${row[1]}`;
-          list.appendChild(div);
-        });
-      } catch (e) {
-        document.getElementById("count").textContent = "讀取失敗";
-      }
+            const recentEntries = data.recent.slice(-10);
+            recentEntries.forEach(row => {
+                const div = document.createElement("div");
+                div.className = "tag";
+                div.textContent = `${row[0]}・${row[1]}`;
+                list.appendChild(div);
+            });
+        } catch (e) {
+            document.getElementById("count").textContent = "讀取失敗";
+        }
     }
 
     async function submitForm() {
-      const chapter = document.getElementById("chapter").value.trim();
-      const name = document.getElementById("name").value.trim();
-      const message = document.getElementById("thanksMessage");
-      message.textContent = "";
+        const button = document.querySelector("button");
+        button.disabled = true; // 禁用按鈕，避免連點
+        button.textContent = "送出中...";
 
-      if (!chapter || !name) return alert("請填寫所有欄位");
+        const chapter = document.getElementById("chapter").value.trim();
+        const name = document.getElementById("name").value.trim();
+        const message = document.getElementById("thanksMessage");
+        message.textContent = "";
 
-      const formData = new FormData();
-      formData.append("chapter", chapter);
-      formData.append("name", name);
-
-      try {
-        const res = await fetch(scriptUrl, {
-          method: "POST",
-          body: formData
-        });
-        const result = await res.text();
-        if (result.includes("成功")) {
-          document.getElementById("chapter").value = "";
-          document.getElementById("name").value = "";
-          message.textContent = "謝謝你的響應";
-          loadData();
-        } else {
-          alert("送出失敗！\n" + result);
+        if (!chapter || !name) {
+            alert("請填寫所有欄位");
+            button.disabled = false; // 恢復按鈕
+            button.textContent = "Yes！ I  Do";
+            return;
         }
-      } catch (err) {
-        alert("送出失敗！");
-      }
+
+        const formData = new FormData();
+        formData.append("chapter", chapter);
+        formData.append("name", name);
+
+        try {
+            const res = await fetch(scriptUrl, {
+                method: "POST",
+                body: formData
+            });
+            const result = await res.text();
+            if (result.includes("成功")) {
+                document.getElementById("chapter").value = "";
+                document.getElementById("name").value = "";
+                message.textContent = "謝謝你的響應";
+                alert("送出成功，謝謝你的響應！");
+                loadData();
+            } else {
+                alert("送出失敗！\n" + result);
+            }
+        } catch (err) {
+            alert("送出失敗！");
+        } finally {
+            // 不管成功或失敗，都恢復按鈕
+            button.disabled = false;
+            button.textContent = "Yes！ I  Do";
+        }
     }
 
     loadData();
     setInterval(loadData, 3000);
-  </script>
+    </script>
 </body>
+
 </html>
